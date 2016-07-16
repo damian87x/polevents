@@ -10,6 +10,18 @@ RSpec.describe Event, type: :model do
 
   end
 
+  describe 'should on create' do
+
+    let(:event) { FactoryGirl.create(:event) }
+
+    it 'be valid after' do
+      expect(event).to be_valid
+    end
+
+  end
+
+
+
 
 
 

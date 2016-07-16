@@ -8,7 +8,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
 
 group :development, :test do
-  gem 'faker', '1.6.5'
+  gem 'faker', git: 'https://github.com/stympy/faker'
   gem 'pry', '0.10.4'
 end
 
