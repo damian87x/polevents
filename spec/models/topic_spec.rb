@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'should have relations' do
+
+    it { should have_many(:events) }
+
+
+  end
 end
