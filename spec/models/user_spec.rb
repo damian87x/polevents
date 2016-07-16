@@ -39,6 +39,14 @@ RSpec.describe User, type: :model do
   end
 
 
+  describe 'should have relations' do
+
+    it { should have_many(:created_events) }
+
+
+
+  end
+
 
 
 end
