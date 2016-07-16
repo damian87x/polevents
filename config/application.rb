@@ -27,6 +27,7 @@ module Polevents
       g.factory_girl dir: 'spec/factories'
     end
 
+
     config.time_zone = 'London'
     config.encoding = "utf-8"
 

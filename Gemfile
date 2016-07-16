@@ -5,6 +5,7 @@ gem 'rails', '5.0.0'
 gem 'pg', '0.18.4'
 gem 'puma', '3.4.0'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'devise'
 
 group :development, :test do
   gem 'faker', '1.6.5'
