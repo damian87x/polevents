@@ -6,7 +6,7 @@ RSpec.describe Event, type: :model do
 
     it { should belong_to(:user) }
     it { should belong_to(:city) }
-    it { should belong_to(:category) }
+    it { should belong_to(:topic) }
 
   end
 
