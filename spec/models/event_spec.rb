@@ -20,6 +20,21 @@ RSpec.describe Event, type: :model do
 
   end
 
+  describe 'validations' do
+
+    let(:new_event) { Event.create }
+
+    it "should name not be empty" do
+      expect(new_event.errors[:name]).to include("can't be blank")
+    end
+
+    it "should start time not be empty" do
+      expect(new_event.errors[:start_time]).to include("can't be blank")
+    end
+
+
+  end
+
 
 
 
