@@ -2,10 +2,9 @@ class Event < ApplicationRecord
 
   include *[
           Event::Relations,
-            Event::Validation
+          Event::DefMethods,
+          Event::Validation
   ]
-
-
 
 
 

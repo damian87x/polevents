@@ -40,6 +40,20 @@ RSpec.describe Event, type: :model do
 
   end
 
+  describe 'methods' do
+    let(:event) { FactoryGirl.create(:event) }
+
+    it "Should return start date" do
+      expect(event.start_date == event.start_time.strftime('%d/%m/%Y')).to be_truthy
+    end
+
+    it "should return belongs_to list" do
+      expect(Event.belongs_to_list).to eq(%w{User City Topic})
+    end
+
+
+
+  end
 
 
 
