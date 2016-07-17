@@ -8,8 +8,8 @@ FactoryGirl.define do
       event.topic = FactoryGirl.create(:topic)
     end
     f.after(:create) do |event|
-      event.users << FactoryGirl.create(:user)
-      event.users << FactoryGirl.create(:user)
+      event.users << FactoryGirl.create(:filter).user
+      event.users << FactoryGirl.create(:filter).user
     end
   end
 end
