@@ -30,12 +30,23 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       end
     end
 
+  end
 
+  describe "#create" do
+    before do
+      post :create, event: FactoryGirl.attributes_for(:event)
+      @json = JSON.parse(response.body)
+    end
+
+    it 'should respond success' do
+      expect(response).to have_http_status(:success)
+    end
 
 
 
 
   end
+
 
 
 end
