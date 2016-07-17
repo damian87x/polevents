@@ -7,8 +7,8 @@ gem 'puma', '3.4.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise','4.2.0'
 gem 'dotenv-rails', :groups => [:development, :test, :production]
-gem 'active_model_serializers','0.10.0'
-
+gem 'active_model_serializers'
+gem 'active_model_serializers_matchers', '0.2.1'
 group :development, :test do
   gem 'faker', git: 'https://github.com/stympy/faker'
   gem 'pry', '0.10.4'

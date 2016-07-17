@@ -19,7 +19,6 @@ Bundler.require(*Rails.groups)
 Dotenv::Railtie.load
 
 HOSTNAME = ENV['HOSTNAME']
-
 module Polevents
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -30,6 +29,7 @@ module Polevents
       g.test_framework :rspec
       g.factory_girl dir: 'spec/factories'
     end
+
 
 
     config.time_zone = 'London'

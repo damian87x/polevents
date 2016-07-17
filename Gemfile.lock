@@ -32,10 +32,11 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_model_serializers (0.10.0)
-      actionpack (>= 4.0)
-      activemodel (>= 4.0)
-      railties (>= 4.0)
+    active_model_serializers (0.8.3)
+      activemodel (>= 3.0)
+    active_model_serializers_matchers (0.2.1)
+      active_model_serializers (~> 0.8.0)
+      rspec (~> 3.0)
     activejob (5.0.0)
       activesupport (= 5.0.0)
       globalid (>= 0.3.6)
@@ -230,6 +231,10 @@ GEM
       netrc (~> 0.8)
     roodi (3.3.1)
       ruby_parser (~> 3.2, >= 3.2.2)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
     rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -295,7 +300,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (= 0.10.0)
+  active_model_serializers
+  active_model_serializers_matchers (= 0.2.1)
   devise (= 4.2.0)
   dotenv-rails
   factory_girl (= 4.7.0)
