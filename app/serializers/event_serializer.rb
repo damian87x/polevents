@@ -1,4 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
+  include BelongsToSerializer
   attributes *Event.serialize_methods
 
   def start_date
@@ -6,6 +7,5 @@ class EventSerializer < ActiveModel::Serializer
   end
 
 
-
-  has_many :users,embed_in_root: false
+  has_many :users, embed_in_root: false
 end

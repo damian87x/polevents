@@ -53,11 +53,11 @@ RSpec.describe Event, type: :model do
     end
 
     it "should return belongs_to list" do
-      expect(Event.belongs_to_list).to eq(%w{User City Topic})
+      expect(Event.belongs_to_list).to eq(%w{user city topic})
     end
 
     it "should return serialize attributes" do
-      expect(Event.serialize_methods).to eq(%i{id start_time end_time})
+      expect(Event.serialize_methods).to eq(%i{id start_time end_time start_date user city topic})
     end
 
 

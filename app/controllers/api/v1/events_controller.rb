@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApplicationController
   def index
-   @events = Event.includes(:users)
+   @events = Event.includes(:city,:user, :topic,:users => [:filters])
    render json: @events
   end
 
