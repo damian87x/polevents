@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
 
-  include *[Event::Relations,
+  include *[
+          Event::Relations,
             Event::Validation
   ]
 
