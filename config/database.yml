@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: polevents_production
-  username: polevents
+  username: <%= ENV['POLEVENTS_DATABASE_USER'] %>
   password: <%= ENV['POLEVENTS_DATABASE_PASSWORD'] %>

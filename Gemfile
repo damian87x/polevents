@@ -6,6 +6,7 @@ gem 'pg', '0.18.4'
 gem 'puma', '3.4.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
+gem 'dotenv-rails', :groups => [:development, :test, :production]
 
 group :development, :test do
   gem 'faker', git: 'https://github.com/stympy/faker'
@@ -18,6 +19,7 @@ group :development do
   gem 'spring-watcher-listen', '2.0.0'
   gem 'rails_best_practices'
   gem 'metric_fu'
+
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
