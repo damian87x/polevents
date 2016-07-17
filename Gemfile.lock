@@ -32,6 +32,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.10.0)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
     activejob (5.0.0)
       activesupport (= 5.0.0)
       globalid (>= 0.3.6)
@@ -291,7 +295,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  devise
+  active_model_serializers (= 0.10.0)
+  devise (= 4.2.0)
   dotenv-rails
   factory_girl (= 4.7.0)
   factory_girl_rails (= 4.7.0)
