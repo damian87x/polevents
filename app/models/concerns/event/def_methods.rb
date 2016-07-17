@@ -13,6 +13,10 @@ module Event::DefMethods
       Event.reflect_on_all_associations(:belongs_to).map(&:class_name).compact
     end
 
+    def serialize_methods
+      %i{id start_time end_time}
+    end
+
   end
 
 

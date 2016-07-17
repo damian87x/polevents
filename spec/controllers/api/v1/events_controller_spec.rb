@@ -24,6 +24,13 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(@json['events'].first['users'].first['filters'].present?).to be_truthy
     end
 
+    it "expect to include column attributes" do
+      Event.serialize_methods.each do |m|
+        expect(@json['events'].first[m.to_s]).to be_truthy
+      end
+    end
+
+
 
 
 

@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :start_time
+  attributes *Event.serialize_methods
 
   def start_date
     object.send(__method__)
