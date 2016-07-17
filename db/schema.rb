@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717081001) do
+ActiveRecord::Schema.define(version: 20160717094520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20160717081001) do
     t.integer  "topic_id"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.index ["city_id"], name: "index_events_on_city_id", using: :btree
+    t.index ["topic_id"], name: "index_events_on_topic_id", using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "filters", force: :cascade do |t|
@@ -44,6 +47,8 @@ ActiveRecord::Schema.define(version: 20160717081001) do
     t.string   "owner_type"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.index ["owner_id", "owner_type"], name: "index_filters_on_owner_id_and_owner_type", using: :btree
+    t.index ["user_id"], name: "index_filters_on_user_id", using: :btree
   end
 
   create_table "topics", force: :cascade do |t|

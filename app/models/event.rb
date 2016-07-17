@@ -4,6 +4,9 @@ class Event < ApplicationRecord
             Event::Validation
   ]
 
-  
+
+
+
+
 
 end
