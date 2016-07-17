@@ -21,10 +21,8 @@ RSpec.describe User, type: :model do
 
     end
 
-
     describe 'when update' do
       let(:user_update) { FactoryGirl.create(:user) }
-
 
       it 'once ID is set, you cannot update it' do
         user_update.update_attributes(id: SecureRandom.uuid)
@@ -38,15 +36,29 @@ RSpec.describe User, type: :model do
 
   end
 
-
   describe 'should have relations' do
 
     it { should have_many(:created_events) }
-
-
+    it { should have_many(:users_events) }
+    it { should have_many(:events) }
 
   end
 
+  describe 'should on create events from user model and expect to' do
+
+    let(:user_update) { FactoryGirl.create(:user) }
+    let(:city) { FactoryGirl.create(:city) }
+    let(:topic) { FactoryGirl.create(:topic) }
+
+    it 'be valid' do
+      expect(user_update.events.create(city_id: city.id,
+                                       topic_id: topic.id ,
+                                       name: 'Crazy programming',
+                                       start_time: Time.now,
+                                       user_id: user_update.id)).to be_valid
+    end
+
+  end
 
 
 end

@@ -16,4 +16,17 @@ RSpec.describe UsersEvent, type: :model do
   end
 
 
+  describe 'should on create users from event model and expect to' do
+
+
+    let(:event) { FactoryGirl.create(:event) }
+
+    it 'be valid' do
+      expect(event.users.create(email: 'test@test.uk', password: '123455678')).to be_valid
+    end
+
+  end
+
+
+
 end

@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 20160716220238) do
   end
 
   create_table "users_events", force: :cascade do |t|
-    t.integer  "event_id",   null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "event_id",                                         null: false
+    t.uuid     "user_id",    default: -> { "uuid_generate_v4()" }, null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.index ["event_id"], name: "index_users_events_on_event_id", using: :btree
     t.index ["user_id"], name: "index_users_events_on_user_id", using: :btree
   end
