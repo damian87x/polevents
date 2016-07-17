@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :event, class: Event do |f|
     f.name { Faker::Superhero.name }
-    f.start_time { Faker::Time.between(Date.today, Date.today + 60.days, :day) }
+    f.start_time { @start  =Faker::Time.between(Time.now, Time.now + 60.days, :day); @start}
+    f.end_time { @start + (1..3).to_a.sample.hours }
     f.before(:create) do |event|
       event.city = FactoryGirl.create(:city)
       event.user = FactoryGirl.create(:user)

@@ -34,8 +34,13 @@ RSpec.describe Event, type: :model do
       expect(new_event.errors[:start_time]).to include("can't be blank")
     end
 
+    it "should start time not be empty" do
+      expect(new_event.errors[:end_time]).to include("can't be blank")
+    end
+
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:start_time) }
+    it { should validate_presence_of(:end_time) }
 
 
   end

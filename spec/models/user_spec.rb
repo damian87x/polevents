@@ -56,6 +56,7 @@ RSpec.describe User, type: :model do
                                 topic_id: topic.id,
                                 name: 'Crazy programming',
                                 start_time: Time.now,
+                                end_time: Time.now + 1.hour,
                                 user_id: user.id)).to be_valid
     end
 
