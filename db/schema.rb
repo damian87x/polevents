@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160717081001) do
   create_table "filters", force: :cascade do |t|
     t.uuid     "user_id",    default: -> { "uuid_generate_v4()" }, null: false
     t.integer  "owner_id"
+    t.string   "owner_type"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
   end

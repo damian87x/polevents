@@ -41,21 +41,36 @@ RSpec.describe User, type: :model do
     it { should have_many(:created_events) }
     it { should have_many(:users_events) }
     it { should have_many(:events) }
+    it { should have_many(:filters) }
 
   end
 
   describe 'should on create events from user model and expect to' do
 
-    let(:user_update) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
     let(:city) { FactoryGirl.create(:city) }
     let(:topic) { FactoryGirl.create(:topic) }
 
     it 'be valid' do
-      expect(user_update.events.create(city_id: city.id,
-                                       topic_id: topic.id ,
-                                       name: 'Crazy programming',
-                                       start_time: Time.now,
-                                       user_id: user_update.id)).to be_valid
+      expect(user.events.create(city_id: city.id,
+                                topic_id: topic.id,
+                                name: 'Crazy programming',
+                                start_time: Time.now,
+                                user_id: user.id)).to be_valid
+    end
+
+  end
+
+  describe 'should on create filters from user model and expect to' do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:city) { FactoryGirl.create(:city) }
+
+
+    it 'be valid' do
+      filter = user.filters.new(user_id: user.id)
+      filter.owner = city
+      filter.save
+      expect(filter).to be_valid
     end
 
   end

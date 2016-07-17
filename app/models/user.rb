@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :events, through: "users_events", source: :event
 
+  has_many :filters
+
   private
 
   def id_not_changed
