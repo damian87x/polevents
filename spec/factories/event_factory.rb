@@ -7,5 +7,9 @@ FactoryGirl.define do
       event.user = FactoryGirl.create(:user)
       event.topic = FactoryGirl.create(:topic)
     end
+    f.after(:create) do |event|
+      event.users << FactoryGirl.create(:user)
+      event.users << FactoryGirl.create(:user)
+    end
   end
 end

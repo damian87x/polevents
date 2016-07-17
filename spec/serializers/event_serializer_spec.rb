@@ -20,7 +20,7 @@ RSpec.describe EventSerializer, :type => :serializer do
   describe 'associations' do
 
     subject { EventSerializer }
-    it { expect(subject).to  have_many(:users_events) }
+    it { expect(subject).to  have_many(:users) }
   end
 
 end
