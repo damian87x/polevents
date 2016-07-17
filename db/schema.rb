@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716220238) do
+ActiveRecord::Schema.define(version: 20160717081001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20160716220238) do
     t.integer  "city_id"
     t.uuid     "user_id",    default: -> { "uuid_generate_v4()" }
     t.integer  "topic_id"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  create_table "filters", force: :cascade do |t|
+    t.uuid     "user_id",    default: -> { "uuid_generate_v4()" }, null: false
+    t.integer  "owner_id"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
   end
