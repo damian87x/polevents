@@ -10,10 +10,6 @@ module Event::DefMethods
 
   class_methods do
 
-    def belongs_to_list
-      Event.reflect_on_all_associations(:belongs_to).map(&:class_name).compact.map(&:downcase)
-    end
-
     def serialize_methods
       %i{id start_time end_time start_date name} + Event.belongs_to_list.map(&:to_sym)
     end
