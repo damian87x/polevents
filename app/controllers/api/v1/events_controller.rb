@@ -13,6 +13,11 @@ class Api::V1::EventsController < ApplicationController
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+    render json: @event
+  end
+
 
 
   private
