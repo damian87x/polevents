@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::CitiesController, type: :controller do
+RSpec.describe Api::V1::TopicsController, type: :controller do
 
   describe "GET #index" do
     before do
       3.times do
-        FactoryGirl.create(:city)
+        FactoryGirl.create(:topic)
       end
       get :index
       @json = JSON.parse(response.body)
@@ -16,16 +16,16 @@ RSpec.describe Api::V1::CitiesController, type: :controller do
     end
 
     it "should return cites" do
-      expect(@json['cities']).to be_truthy
+      expect(@json['topics']).to be_truthy
     end
 
     it "should return cites" do
-      expect(@json['cities'].count).to eq(3)
+      expect(@json['topics'].count).to eq(3)
     end
 
     it "expect to include column attributes" do
-      City.serialize_methods.each do |m|
-        expect(@json['cities'].first[m.to_s]).to be_truthy
+      Topic.serialize_methods.each do |m|
+        expect(@json['topics'].first[m.to_s]).to be_truthy
       end
     end
 
