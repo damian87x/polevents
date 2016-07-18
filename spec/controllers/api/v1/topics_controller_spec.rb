@@ -15,11 +15,11 @@ RSpec.describe Api::V1::TopicsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "should return cites" do
+    it "should return topics" do
       expect(@json['topics']).to be_truthy
     end
 
-    it "should return cites" do
+    it "should return topics" do
       expect(@json['topics'].count).to eq(3)
     end
 
