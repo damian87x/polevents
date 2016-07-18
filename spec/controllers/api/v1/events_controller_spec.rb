@@ -34,7 +34,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
 
   describe "#create" do
     before do
-      post :create, event: FactoryGirl.attributes_for(:event)
+      post :create, event: FactoryGirl.build(:event).attributes.symbolize_keys
       @json = JSON.parse(response.body)
     end
 
