@@ -16,11 +16,11 @@ RSpec.describe Api::V1::CitiesController, type: :controller do
     end
 
     it "should return cites" do
-      expect(@json['cites']).to be_truthy
+      expect(@json['cities']).to be_truthy
     end
 
     it "should return cites" do
-      expect(@json['cites'].count).to eq(3)
+      expect(@json['cities'].count).to eq(3)
     end
 
   end
