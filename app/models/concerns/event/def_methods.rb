@@ -15,7 +15,7 @@ module Event::DefMethods
     end
 
     def serialize_methods
-      %i{id start_time end_time start_date} + Event.belongs_to_list.map(&:to_sym)
+      %i{id start_time end_time start_date name} + Event.belongs_to_list.map(&:to_sym)
     end
 
 

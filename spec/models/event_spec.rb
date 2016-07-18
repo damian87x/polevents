@@ -57,9 +57,8 @@ RSpec.describe Event, type: :model do
     end
 
     it "should return serialize attributes" do
-      expect(Event.serialize_methods).to eq(%i{id start_time end_time start_date user city topic})
+      expect(Event.serialize_methods).to eq(%i{id start_time end_time start_date name user city topic})
     end
-
 
 
 

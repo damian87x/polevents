@@ -33,8 +33,9 @@ RSpec.describe Api::V1::EventsController, type: :controller do
   end
 
   describe "#create" do
+    let(:event) { FactoryGirl.build(:event) }
     before do
-      post :create, event: FactoryGirl.build(:event).attributes.symbolize_keys
+      post :create, event: event.attributes.symbolize_keys
       @json = JSON.parse(response.body)
     end
 
@@ -42,11 +43,29 @@ RSpec.describe Api::V1::EventsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-
-
+    it 'should return same event name when is success' do
+      expect(event.name).to eq(@json["event"]["name"])
+    end
 
   end
 
+
+  describe "#show" do
+    let(:event) { FactoryGirl.create(:event) }
+    before do
+      post :show, id: event.id
+      @json = JSON.parse(response.body)
+    end
+
+    it 'should respond success' do
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'should return same event id when is success' do
+      expect(event.id).to eq(@json["event"]["id"])
+    end
+
+  end
 
 
 end
