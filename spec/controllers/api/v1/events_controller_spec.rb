@@ -35,7 +35,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
   describe "#create" do
     let(:event) { FactoryGirl.build(:event) }
     before do
-      post :create, event: event.attributes.symbolize_keys
+      post :create,  event: event.attributes.symbolize_keys
       @json = JSON.parse(response.body)
     end
 
@@ -53,7 +53,7 @@ RSpec.describe Api::V1::EventsController, type: :controller do
   describe "#show" do
     let(:event) { FactoryGirl.create(:event) }
     before do
-      post :show, id: event.id
+      get :show, params: {id: event.id}
       @json = JSON.parse(response.body)
     end
 
