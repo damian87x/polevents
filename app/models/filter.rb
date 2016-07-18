@@ -4,8 +4,10 @@ class Filter < ApplicationRecord
   belongs_to :owner, polymorphic: true
 
   def self.serialize_methods
-    Filter.belongs_to_list.map(&:to_sym)
+   %i{name} + Filter.belongs_to_list.map(&:to_sym)
   end
+
+  delegate :name, to: :owner,  :allow_nil => true
 
 
 end

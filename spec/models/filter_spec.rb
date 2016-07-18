@@ -9,6 +9,12 @@ RSpec.describe Filter, type: :model do
 
   end
 
+  describe 'methods' do
+    let(:filter) { FactoryGirl.create(:filter) }
+
+    it { expect(filter.name).to eq(filter.owner.name) }
+
+  end
 
 
 end
