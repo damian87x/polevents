@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:users_events) }
     it { should have_many(:events) }
     it { should have_many(:filters) }
-
+    it { should have_many(:discussion_topics) }
   end
 
   describe 'should on create events from user model and expect to' do

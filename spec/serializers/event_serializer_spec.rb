@@ -21,6 +21,7 @@ RSpec.describe EventSerializer, :type => :serializer do
 
     subject { EventSerializer }
     it { expect(subject).to  have_many(:users) }
+    it { expect(subject).to  have_many(:discussion_topics) }
   end
 
 end

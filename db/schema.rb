@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717191315) do
+ActiveRecord::Schema.define(version: 20160718173348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20160717191315) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "discussion_topics", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "event_id"
+    t.uuid     "user_id",    default: -> { "uuid_generate_v4()" }
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   create_table "events", force: :cascade do |t|

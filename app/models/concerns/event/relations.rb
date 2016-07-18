@@ -9,5 +9,7 @@ module Event::Relations
     has_many :users_events
 
     has_many :users, through: "users_events", source: :user
+
+    has_many :discussion_topics
   end
 end

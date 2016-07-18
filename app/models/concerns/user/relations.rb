@@ -6,6 +6,8 @@ module User::Relations
 
     has_many :users_events
 
+    has_many :discussion_topics
+
     has_many :events, through: "users_events", source: :event
 
     has_many :filters
