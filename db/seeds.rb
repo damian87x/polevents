@@ -12,3 +12,8 @@ Topic.create([
               {name: 'Programmer no live'},
              ])
 
+User.create([
+        {login: 'test@test.uk', password: '12345678'},
+        {login: 'test@test2.uk', password: '12345678'}
+            ])
+
