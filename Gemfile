@@ -20,6 +20,7 @@ group :development do
   gem 'spring-watcher-listen', '2.0.0'
   gem 'rails_best_practices'
   gem 'metric_fu'
+  gem 'letter_opener'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
