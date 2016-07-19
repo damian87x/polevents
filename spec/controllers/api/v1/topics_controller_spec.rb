@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::TopicsController, type: :controller do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:auth) { {'Authorization' => "#{user.id}"} }
 
   describe "GET #index" do
     before do
       3.times do
         FactoryGirl.create(:topic)
       end
-      get :index
+      get :index, params: nil, session: auth
       @json = JSON.parse(response.body)
     end
 

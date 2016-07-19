@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::FiltersController, type: :controller do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:auth) { {'Authorization' => "#{user.id}"} }
+
 
   describe "GET #index" do
     before do
       3.times do
         FactoryGirl.create(:filter)
       end
-      get :index
+      get :index, params: nil , session: auth
       @json = JSON.parse(response.body)
     end
 
@@ -31,7 +34,7 @@ RSpec.describe Api::V1::FiltersController, type: :controller do
       filter.owner_id = owner.id
       filter.user_id = FactoryGirl.create(:user).id
       filter.owner_type = owner.class
-      post :create,  params:{ filter: filter.attributes.symbolize_keys }
+      post :create,  params:{ filter: filter.attributes.symbolize_keys }, session: auth
       @json = JSON.parse(response.body)
     end
 
@@ -49,7 +52,7 @@ RSpec.describe Api::V1::FiltersController, type: :controller do
   describe "#upate" do
     let(:filter) { FactoryGirl.create(:filter) }
     before do
-      put :update, params:{ id: filter.id, filter: filter.attributes.symbolize_keys }
+      put :update, params:{ id: filter.id, filter: filter.attributes.symbolize_keys }, session: auth
       @json = JSON.parse(response.body)
     end
 
