@@ -6,10 +6,12 @@ Rails.application.routes.draw do
       resources :cities, only: [:index]
       resources :topics, only: [:index]
       resources :filters, only: [:index, :create, :update]
+      resource :login, only: [:create], controller: :sessions
     end
   end
 
 
-  devise_for :users
+
+  devise_for :user, only: []
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

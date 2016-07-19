@@ -13,7 +13,7 @@ Topic.create([
              ])
 
 User.create([
-        {login: 'test@test.uk', password: '12345678'},
-        {login: 'test@test2.uk', password: '12345678'}
+        {email: 'test@test.uk', password: '12345678'},
+        {email: 'test@test2.uk', password: '12345678'}
             ])
 
