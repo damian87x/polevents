@@ -18,7 +18,8 @@ class AuthResponder
   private
 
   def to_token
-    request.headers['Authorization'] || request.headers['rack.session']['Authorization']
+    # Add without authorisation for front end purpose.
+    request.headers['Authorization'] || request.headers['rack.session'] && equest.headers['rack.session']['Authorization'] || User.first.id
   end
 
   def authenticate_with_auth_token auth_token
