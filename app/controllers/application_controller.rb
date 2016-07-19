@@ -4,9 +4,9 @@ class ApplicationController < ActionController::API
   before_action :authenticate_user_from_token!
 
   def authenticate_user_from_token!
-    auth_token = request.headers['Authorization'] || request.headers['rack.session']['Authorization']
-    if auth_token
-      authenticate_with_auth_token auth_token
+    responder = AuthResponder.new(self)
+    if responder.sucess?
+      responder.respond
     else
       authentication_error
     end
@@ -14,19 +14,9 @@ class ApplicationController < ActionController::API
 
   private
 
-  def authenticate_with_auth_token auth_token
-    user_id = auth_token.split(':').first
-    user = User.where(id: user_id).first
-    if user && Devise.secure_compare(user.id, auth_token)
-      sign_in user, store: false
-    else
-      authentication_error
-    end
-  end
 
   def authentication_error
-    # User's token is either invalid or not in the right format
-    render json: {error: t('devise.failure.unauthenticated')}, status: 401  # Authentication timeout
+    render json: {error: t('devise.failure.unauthenticated')}, status: 401
   end
 
 end
