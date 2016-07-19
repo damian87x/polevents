@@ -2,7 +2,7 @@ class Api::V1::FiltersController < ApplicationController
   before_action :set_filter, only: [:update]
 
   def index
-    @filters = Filter.includes(:user,:owner)
+    @filters = current_user.filters
     render json: @filters
   end
 

@@ -12,8 +12,16 @@ class ApplicationController < ActionController::API
     end
   end
 
-  private
 
+  def current_user
+    @current_user
+  end
+
+  def current_user=(value)
+    @current_user= value
+  end
+
+  protected
 
   def authentication_error
     render json: {error: t('devise.failure.unauthenticated')}, status: 401

@@ -7,7 +7,7 @@ class AuthResponder
     @token = to_token
     @user_id = nil
     @respond = nil
-    @sucess =false
+    @sucess = false
     authenticate_with_auth_token @token
   end
 
@@ -25,6 +25,7 @@ class AuthResponder
     @user_id = auth_token.split(':').first
     user = find_user
     if user && Devise.secure_compare(user.id, auth_token)
+      @controller.current_user = user
       @sucess = true
       @respond = sign_in user, store: false
     else
@@ -33,7 +34,7 @@ class AuthResponder
   end
 
   def find_user
-    User.where(id: @user_id).first
+    User.where(id: @user_id).includes(:filters => [:owner]).first
   end
 
 

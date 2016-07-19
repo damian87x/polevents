@@ -8,7 +8,7 @@ RSpec.describe Api::V1::FiltersController, type: :controller do
   describe "GET #index" do
     before do
       3.times do
-        FactoryGirl.create(:filter)
+        user.filters << FactoryGirl.create(:filter)
       end
       get :index, params: nil , session: auth
       @json = JSON.parse(response.body)
