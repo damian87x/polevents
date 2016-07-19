@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   after_create :notify_users
 
   def to_filter_conditions
-    {}
+    {city_id: city_id, topic_id: topic_id}
   end
 
   private

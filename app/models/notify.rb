@@ -18,7 +18,9 @@ class Notify
   end
 
   def find_users
-    @users = []
+    @users = User.joins('LEFT JOIN filters on users.id = filters.user_id')
+            .where("filters.owner_id = ? AND filters.owner_type = ? OR filters.owner_id = ? AND filters.owner_type = ?",
+                   @conditions[:city_id], 'City', @conditions[:topic_id], 'Topic')
   end
 
   attr_accessor :event, :conditions
