@@ -44,7 +44,6 @@ RSpec.describe Event, type: :model do
     it { should validate_presence_of(:end_time) }
 
 
-
   end
 
   describe 'methods' do
@@ -52,6 +51,11 @@ RSpec.describe Event, type: :model do
 
     it "Should return start date" do
       expect(event.start_date == event.start_time.strftime('%d/%m/%Y')).to be_truthy
+    end
+
+
+    it "should respond to to_filter_conditions" do
+      expect(event.respond_to?(:to_filter_conditions)).to be_truthy
     end
 
     it "should return belongs_to list" do
