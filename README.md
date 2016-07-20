@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Ruby on Rails 5 Back End for React JS application
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
+2.2.3
 * Database initialization
-
+rake db:create && rake db:migrate && rake db:seed
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
+ rspec spec
 * Deployment instructions
-
-* ...
+rails s
