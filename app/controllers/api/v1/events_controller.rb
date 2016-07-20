@@ -1,8 +1,9 @@
 class Api::V1::EventsController < ApplicationController
   def index
-    # binding.pry
-   @events = params[:city_id] ? Event.search_by_filters(params.compact) : Event.search_all
-   render json: @events
+    p = params.compact
+    @events = params[:city_id] ? Event.search_by_filters(p) : Event.search_all
+    current_user.update_filters(p)
+    render json: @events
   end
 
   def create
@@ -20,11 +21,10 @@ class Api::V1::EventsController < ApplicationController
   end
 
 
-
   private
 
   def event_params
-    params.require(:event).permit(:name,:start_time,:city_id,:user_id,:topic_id,:end_time)
+    params.require(:event).permit(:name, :start_time, :city_id, :user_id, :topic_id, :end_time)
   end
 
 

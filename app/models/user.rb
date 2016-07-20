@@ -9,5 +9,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
+  def update_filters(params)
+
+  end
 
 end
