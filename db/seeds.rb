@@ -38,6 +38,6 @@ Event.create([
 Filter.create([
                {user_id: User.first.id, owner_id: City.last.id, owner_type: 'City'},
                {user_id: User.first.id, owner_id: Topic.last.id, owner_type: 'Topic'},
-               {user_id: User.first.id, owner_id: Topic.last.id, owner_type: 'Topic'}
+               {user_id: User.first.id, owner_id: DateAndRange.last.id, owner_type: 'DateAndRange'}
               ])
 
