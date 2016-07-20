@@ -42,9 +42,10 @@ RSpec.describe Api::V1::EventsController, type: :controller do
        @event = FactoryGirl.create(:event)
       end
       user = FactoryGirl.create(:user)
-      user.filters.create(user_id: user.id, owner_id: @event.city.id)
-      user.filters.create(user_id: user.id, owner_id: @event.topic.id)
-      get :index,params: {city_id: @event.city.id, topic_id: @event.topic.id, start_time: (@event.start_time + 1.hour).to_f}, session: auth
+      get :index,params: {city_id: @event.city.id,
+                          topic_id: @event.topic.id,
+                          start_time: (@event.start_time + 1.hour).to_f},
+                          session: auth
       @json = JSON.parse(response.body)
     end
 

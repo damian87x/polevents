@@ -12,10 +12,12 @@ class Event < ApplicationRecord
   after_create :notify_users
 
   scope :search_all, -> { includes(self.include_list) }
-  scope :search_by_filters, ->(params) { includes(Event.include_list).where(["start_time < ? AND city_id = ? AND topic_id = ? ", Time.at(Event.con_time(params[:start_time])),params[:city_id], params[:topic_id]])}
+  scope :search_by_filters, ->(params) { includes(Event.include_list)
+          .where(["start_time < ? AND city_id = ? AND topic_id = ? ",
+                  Time.at(Event.con_time(params[:start_time])), params[:city_id], params[:topic_id]]) }
 
   def self.include_list
-    [:city,:user, :topic,:discussion_topics,:users => [:filters]]
+    [:city, :user, :topic, :discussion_topics, :users => [:filters]]
   end
 
   def self.con_time(time)
@@ -34,7 +36,7 @@ class Event < ApplicationRecord
   private
 
   def notify_users
-   fork { Notify.new { |n| n.event = Event.last } } unless Rails.env.test?
+    fork { Notify.new { |n| n.event = Event.last } } unless Rails.env.test?
   end
 
 

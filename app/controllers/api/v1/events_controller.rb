@@ -1,8 +1,12 @@
 class Api::V1::EventsController < ApplicationController
   def index
-    p = params.compact
-    @events = params[:city_id] ? Event.search_by_filters(p) : Event.search_all
-    current_user.update_filters(p)
+    if params[:city_id]
+      p = params.compact
+      @events = Event.search_by_filters(p)
+      current_user.update_filters(p)
+    else
+      @events = Event.search_all
+    end
     render json: @events
   end
 
