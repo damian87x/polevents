@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApplicationController
   def index
-   @events = Event.includes(:city,:user, :topic,:discussion_topics,:users => [:filters])
+   @events = params[:city_id] ? Event.search_by_filters(params) : Event.search_all
    render json: @events
   end
 
