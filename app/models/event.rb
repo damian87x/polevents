@@ -12,13 +12,19 @@ class Event < ApplicationRecord
   after_create :notify_users
 
   scope :search_all, -> { includes(self.include_list) }
-  scope :search_by_filters, ->(params) { includes(Event.include_list).where(city_id: params[:city_id],
-                                                                            topic_id: params[:topic_id],
-                                                                            start_time: Time.at(params[:start_time].to_f)
-  )}
+  scope :search_by_filters, ->(params) { includes(Event.include_list).where(["start_time < ? AND city_id = ? AND topic_id = ? ", Time.at(Event.con_time(params[:start_time])),params[:city_id], params[:topic_id]])}
 
   def self.include_list
     [:city,:user, :topic,:discussion_topics,:users => [:filters]]
+  end
+
+  def self.con_time(time)
+    case time
+      when Time
+        time
+      when String
+        time.to_f
+    end
   end
 
   def to_filter_conditions
