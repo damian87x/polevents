@@ -36,7 +36,7 @@ class Event < ApplicationRecord
   private
 
   def notify_users
-    fork { Notify.new { |n| n.event = Event.last } } unless Rails.env.test?
+    fork { Notify.new { |n| n.event = self } } unless Rails.env.test?
   end
 
 
